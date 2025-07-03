@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 from django.shortcuts import render, redirect
-=======
+
 from django.shortcuts import render, redirect, get_object_or_404
->>>>>>> 652cf96 (changes made to ui and also changed the edit and update)
+
 
 # Create your views here.
 from django.contrib import messages
@@ -50,24 +50,15 @@ def edit(request, item_id):
     }
     return render(request, 'todo/edit.html', page)
 
-<<<<<<< HEAD
-
-def toggle_status(request, item_id):
-    """Toggle completion status for a Todo item."""
-    item = Todo.objects.get(id=item_id)
-=======
 def toggle_status(request, item_id):
     item = get_object_or_404(Todo, id=item_id)
->>>>>>> 652cf96 (changes made to ui and also changed the edit and update)
     item.is_completed = not item.is_completed
     if item.is_completed:
         item.completed_at = timezone.now()
     else:
         item.completed_at = None
     item.save()
-<<<<<<< HEAD
+
     return redirect('todo')
 
-=======
-    return redirect('todo')
->>>>>>> 652cf96 (changes made to ui and also changed the edit and update)
+

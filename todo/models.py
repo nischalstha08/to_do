@@ -1,8 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
-=======
-
->>>>>>> 652cf96 (changes made to ui and also changed the edit and update)
 from django.utils import timezone
 
 # Create your models here.

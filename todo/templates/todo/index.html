@@ -25,26 +25,12 @@
 
       .completed {
         text-decoration: line-through;
-<<<<<<< HEAD
-        color: gray;
-        background-color: #f0f0f0;
-      }
-
-      .submit_form {
-        text-align: center;
-        padding: 3%;
-        background: pink;
-        border-radius: 25px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4),
-          0 6px 20px 0 rgba(0, 0, 0, 0.36);
-=======
         color: #6c757d;
         background-color: #f8f9fa;
       }
 
       .overdue {
         border-color: #dc3545 !important;
->>>>>>> 652cf96 (changes made to ui and also changed the edit and update)
       }
     </style>
   </head>
@@ -62,56 +48,9 @@
     </div>
     {% endfor %} {% endif %}
 
-<<<<<<< HEAD
-    <center class="row">
-      <h1><i>__TODO LIST__</i></h1>
-      <hr />
-    </center>
-
-    <div class="row">
-      <div class="col-md-8">
-        {% for i in list %}
-        <div class="card {% if i.is_completed %}completed{% endif %}">
-          <form method="POST" action="{% url 'toggle_status' i.id %}" style="display:inline; float:right; margin-right:5px">
-            {% csrf_token %}
-            <input type="checkbox" onchange="this.form.submit()" {% if i.is_completed %}checked{% endif %} />
-          </form>
-          <center><b>{{i.title}}</b></center>
-          <hr />
-          {{i.date}}
-          <hr />
-          {{i.details}}
-          <br />
-          <br />
-          <form
-            action="/del/{{i.id}}"
-            method="POST"
-            style="padding-right: 4%; padding-bottom: 3%"
-          >
-            {% csrf_token %}
-            <button
-              value="remove"
-              type="submit"
-              class="btn btn-primary"
-              style="float: right"
-            >
-              <span class="glyphicon glyphicon-trash"></span> &nbsp; remove
-            </button>
-            <a
-              href="/edit/{{i.id}}"
-              class="btn btn-warning"
-              style="float: right; margin-right: 5px"
-            >
-              <span class="glyphicon glyphicon-edit"></span> &nbsp; edit
-            </a>
-          </form>
-        </div>
-        {% endfor%}
-=======
     <div class="row mb-4">
       <div class="col">
         <h1 class="text-center">{{ title }}</h1>
->>>>>>> 652cf96 (changes made to ui and also changed the edit and update)
       </div>
     </div>
 

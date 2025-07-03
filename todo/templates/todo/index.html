@@ -27,6 +27,12 @@
         background: lightblue;
       }
 
+      .completed {
+        text-decoration: line-through;
+        color: gray;
+        background-color: #f0f0f0;
+      }
+
       .submit_form {
         text-align: center;
         padding: 3%;
@@ -53,7 +59,11 @@
     <div class="row">
       <div class="col-md-8">
         {% for i in list %}
-        <div class="card">
+        <div class="card {% if i.is_completed %}completed{% endif %}">
+          <form method="POST" action="{% url 'toggle_status' i.id %}" style="display:inline; float:right; margin-right:5px">
+            {% csrf_token %}
+            <input type="checkbox" onchange="this.form.submit()" {% if i.is_completed %}checked{% endif %} />
+          </form>
           <center><b>{{i.title}}</b></center>
           <hr />
           {{i.date}}

@@ -5,6 +5,7 @@ from django.contrib import messages
 
 from .forms import TodoForm
 from .models import Todo
+from django.utils import timezone
 
 def index(request):
 
@@ -44,4 +45,16 @@ def edit(request, item_id):
         "title": "Edit Task",
     }
     return render(request, 'todo/edit.html', page)
+
+
+def toggle_status(request, item_id):
+    """Toggle completion status for a Todo item."""
+    item = Todo.objects.get(id=item_id)
+    item.is_completed = not item.is_completed
+    if item.is_completed:
+        item.completed_at = timezone.now()
+    else:
+        item.completed_at = None
+    item.save()
+    return redirect('todo')
 
